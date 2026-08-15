@@ -19,7 +19,6 @@
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed;
             color: #333;
         }
 
@@ -31,8 +30,10 @@
             align-items: center;
             justify-content: space-between;
             color: white;
-            min-height: 50px;
+            min-height: 60px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 100;
         }
 
         .header .logo {
@@ -42,21 +43,36 @@
         }
 
         .logo img {
-            width: 70px;
+            width: 50px;
             height: auto;
         }
 
         .logo-text {
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
 
+        /* Menu Hamburger untuk Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
         .header nav {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .header a {
@@ -64,7 +80,7 @@
             color: white;
             font-weight: 500;
             font-size: 14px;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
@@ -76,8 +92,8 @@
         /* MAIN CONTENT CONTAINER */
         .main-content {
             max-width: 1100px;
-            margin: 30px auto;
-            padding: 30px;
+            margin: 20px auto;
+            padding: 25px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -97,7 +113,7 @@
 
         .page-title {
             color: #003366;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             margin-top: 0;
             margin-bottom: 5px;
@@ -145,7 +161,7 @@
         /* CARD STATISTIK / DEMOGRAFI */
         .stat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
@@ -213,12 +229,6 @@
             margin-bottom: 20px;
         }
 
-        @media (max-width: 768px) {
-            .grid-2-col {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .boundaries-table {
             width: 100%;
             border-collapse: collapse;
@@ -237,11 +247,17 @@
         }
 
         /* TABEL SEJARAH KEPEMIMPINAN */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
         .table-custom {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
             font-size: 13.5px;
+            min-width: 400px;
         }
 
         .table-custom th, .table-custom td {
@@ -268,12 +284,7 @@
             font-size: 13.5px;
             padding-left: 20px;
             line-height: 1.8;
-        }
-
-        @media (max-width: 600px) {
-            .tokoh-list {
-                columns: 1;
-            }
+            margin-top: 5px;
         }
 
         /* TOMBOL NAVIGASI BOTTOM */
@@ -283,6 +294,7 @@
             margin-top: 30px;
             padding-top: 15px;
             border-top: 1px solid #eee;
+            gap: 10px;
         }
 
         .navigation-buttons a {
@@ -290,7 +302,7 @@
         }
 
         .navigation-buttons button {
-            padding: 9px 20px;
+            padding: 10px 18px;
             font-size: 13px;
             font-weight: 500;
             color: white;
@@ -299,6 +311,9 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .navigation-buttons button:hover {
@@ -308,10 +323,58 @@
         .footer {
             text-align: center;
             padding: 15px;
-            background-color: rgba(0, 51, 102, 0.9);
+            background-color: rgba(0, 51, 102, 0.95);
             color: white;
             font-size: 13px;
             margin-top: 40px;
+        }
+
+        /* MEDIA QUERIES UNTUK TAMPILAN MOBILE / ANDROID */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .header nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 51, 102, 0.98);
+                padding: 10px 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            }
+
+            .header nav.active {
+                display: flex;
+            }
+
+            .header nav a {
+                padding: 12px 20px;
+                border-radius: 0;
+            }
+
+            .main-content {
+                margin: 15px;
+                padding: 15px;
+            }
+
+            .grid-2-col {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .tokoh-list {
+                columns: 1;
+                -webkit-columns: 1;
+                -moz-columns: 1;
+            }
+
+            .page-title {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -321,14 +384,18 @@
             <img src="logokkn.png" alt="Logo Desa">
             <span class="logo-text">Desa Jamberama</span>
         </div>
-        <nav>
-            <!-- class="active" sudah dipindahkan ke Profil Desa Jamberama -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="nav-list">
             <a href="index.html">Beranda</a>
             <a href="ProfilDesaJamberama.html" class="active">Profil Desa Jamberama</a>
-            <a href="ProdukUmkm.html">Produk Umkm Desa</a>
+            <a href="ProdukUmkm.html">Produk UMKM Desa</a>
             <a href="ObjekWisataDesa.html">Objek Wisata Desa</a>
             <a href="PusatInformasiMap.html">Pusat Informasi Map Desa</a>
-            <a href="Galeri.html">Galeri Mahasiswa Kkn Umk</a>
+            <a href="Galeri.html">Galeri Mahasiswa KKN UMK</a>
         </nav>
     </header>
 
@@ -426,7 +493,7 @@
         <!-- TOKOH PERINTIS & PERANGKAT PERTAMA -->
         <div class="grid-2-col">
             <div>
-                <h3 style="font-size: 15px; color: #003366;">Tokoh Perintis Pemekaran Desa:</h3>
+                <h3 style="font-size: 15px; color: #003366; margin-top: 0;">Tokoh Perintis Pemekaran Desa:</h3>
                 <ol class="tokoh-list">
                     <li>Bapak T. Tisno (Kadus)</li>
                     <li>Bapak Emon</li>
@@ -441,7 +508,7 @@
                 </ol>
             </div>
             <div>
-                <h3 style="font-size: 15px; color: #003366;">Perangkat Desa Pertama (1986):</h3>
+                <h3 style="font-size: 15px; color: #003366; margin-top: 0;">Perangkat Desa Pertama (1986):</h3>
                 <ol class="tokoh-list">
                     <li>Sekretaris Desa: Bapak Rakib</li>
                     <li>Kaur Umum: Bapak Saka Jaya</li>
@@ -459,47 +526,49 @@
         <h2 class="section-title"><i class="fa-solid fa-users"></i> Sejarah Kepemimpinan Kuwu / Kepala Desa</h2>
         <p>Sejak berdiri sebagai desa mandiri, Kepemimpinan Desa Jamberama telah diampu oleh beberapa Kepala Desa (Kuwu) berikut:</p>
 
-        <table class="table-custom">
-            <thead>
-                <tr>
-                    <th style="width: 8%;">No</th>
-                    <th>Nama Kepala Desa / Kuwu</th>
-                    <th style="width: 35%;">Masa Jabatan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="text-align: center;">1</td>
-                    <td><strong>Bapak S. Sutriadi</strong></td>
-                    <td>1983 – 1995</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;">2</td>
-                    <td><strong>Bapak Jumadi</strong></td>
-                    <td>1995 – 2001</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;">3</td>
-                    <td><strong>Bapak Yoyo Tri Jaya</strong></td>
-                    <td>2001 – 2007</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;">4</td>
-                    <td><strong>Bapak Djukari, S.Pd.</strong></td>
-                    <td>2008 – 2015</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;">5</td>
-                    <td><strong>Bapak Anda Nirwan, S.Pd.I</strong></td>
-                    <td>2018 – 2019</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;">6</td>
-                    <td><strong>Bapak Suryaka, S.Pd</strong></td>
-                    <td>2020 – Sekarang</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">No</th>
+                        <th>Nama Kepala Desa / Kuwu</th>
+                        <th style="width: 35%;">Masa Jabatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">1</td>
+                        <td><strong>Bapak S. Sutriadi</strong></td>
+                        <td>1983 – 1995</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">2</td>
+                        <td><strong>Bapak Jumadi</strong></td>
+                        <td>1995 – 2001</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">3</td>
+                        <td><strong>Bapak Yoyo Tri Jaya</strong></td>
+                        <td>2001 – 2007</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">4</td>
+                        <td><strong>Bapak Djukari, S.Pd.</strong></td>
+                        <td>2008 – 2015</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">5</td>
+                        <td><strong>Bapak Anda Nirwan, S.Pd.I</strong></td>
+                        <td>2018 – 2019</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">6</td>
+                        <td><strong>Bapak Suryaka, S.Pd</strong></td>
+                        <td>2020 – Sekarang</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- NAVIGASI BAWAH -->
         <div class="navigation-buttons">
@@ -513,7 +582,17 @@
     </div>
 
     <footer class="footer">
-        &copy; 2026 Kkn Desa Jamberama
+        &copy; 2026 KKN Desa Jamberama
     </footer>
+
+    <script>
+        // Script untuk toggle menu navigasi di mobile
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
