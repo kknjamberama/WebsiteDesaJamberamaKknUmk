@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Informasi Map - Desa Jamberama</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('LatarBelakang.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        /* HEADER & NAVIGASI */
+        .header {
+            background-color: rgba(0, 51, 102, 0.95);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            min-height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: auto;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header a:hover, .header a.active {
+            background-color: #004b8d;
+        }
+
+        /* MAIN CONTENT CONTAINER */
+        .main-content {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-title {
+            color: #003366;
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* LEGENDA KETERANGAN */
+        .legend-box {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .legend-title {
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        /* Warna Garis di Legenda */
+        .line-yellow { width: 25px; height: 4px; background-color: #FFD700; border: 1px solid #999; }
+        .line-blue { width: 25px; height: 4px; background-color: #0000FF; }
+        .line-red { width: 25px; height: 4px; background-color: #FF0000; }
+
+        /* WADAH GAMBAR PETA */
+        .map-image-wrapper {
+            margin-top: 20px;
+            border: 3px solid #003366;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: #eee; /* Warna dasar sebelum gambar dimuat */
+            text-align: center;
+        }
+
+        .map-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* TOMBOL NAVIGASI BOTTOM */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .navigation-buttons a { text-decoration: none; }
+        .navigation-buttons button {
+            padding: 9px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+            background-color: #003366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .navigation-buttons button:hover { background-color: #004b8d; }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="logokkn.png" alt="Logo Desa">
+            <span class="logo-text">Desa Jamberama</span>
+        </div>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="ProfilDesaJamberama.html">Profil Desa Jamberama</a>
+            <a href="ProdukUmkm.html">Produk Umkm Desa</a>
+            <a href="ObjekWisataDesa.html">Objek Wisata Desa</a>
+            <a href="PusatInformasiMap.html" class="active">Pusat Informasi Map Desa</a>
+            <a href="Galeri.html">Galeri Mahasiswa Kkn Umk</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1 class="page-title">Pusat Informasi Map Desa</h1>
+        <p class="page-subtitle">Peta Fasilitas Umum, Jalan, dan Batas Wilayah Desa Jamberama</p>
+
+
+        <!-- WADAH GAMBAR PETA -->
+        <div class="map-image-wrapper">
+            <!-- PENTING: Ganti "PetaDesa.png" di bawah ini dengan nama file foto peta Anda -->
+            <img src="PetaDesa.png" alt="Peta Fasilitas dan Batas Wilayah Desa Jamberama">
+        </div>
+
+        <!-- NAVIGASI BAWAH -->
+        <div class="navigation-buttons">
+            <a href="ObjekWisataDesa.html">
+                <button><i class="fa-solid fa-arrow-left"></i> Objek Wisata</button>
+            </a>
+            <a href="Galeri.html">
+                <button>Galeri <i class="fa-solid fa-arrow-right"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Kkn Desa Jamberama
+    </footer>
+
+</body>
+</html>

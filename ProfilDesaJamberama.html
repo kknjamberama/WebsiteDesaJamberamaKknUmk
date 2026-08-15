@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Desa Jamberama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('LatarBelakang.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        /* HEADER & NAVIGASI */
+        .header {
+            background-color: rgba(0, 51, 102, 0.95);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            min-height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: auto;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header a:hover, .header a.active {
+            background-color: #004b8d;
+        }
+
+        /* MAIN CONTENT CONTAINER */
+        .main-content {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            color: #003366;
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            color: #003366;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            color: #ffc107;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 14px;
+            color: #444;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 25px 0;
+        }
+
+        /* CARD STATISTIK / DEMOGRAFI */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid #003366;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .stat-card h4 {
+            margin: 0 0 5px 0;
+            font-size: 12px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        .stat-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #003366;
+        }
+
+        /* KRONOLOGI TABEL & LIST */
+        .timeline-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .timeline-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        .timeline-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #2e7d32;
+            font-size: 12px;
+        }
+
+        /* BATAS WILAYAH */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .boundaries-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        .boundaries-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .boundaries-table td:first-child {
+            font-weight: 700;
+            color: #003366;
+            width: 40%;
+        }
+
+        /* TABEL SEJARAH KEPEMIMPINAN */
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 13.5px;
+        }
+
+        .table-custom th, .table-custom td {
+            border: 1px solid #e0e0e0;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .table-custom th {
+            background-color: #003366;
+            color: white;
+            font-weight: 500;
+        }
+
+        .table-custom tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* DAFTAR TOKOH & PERANGKAT */
+        .tokoh-list {
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+            font-size: 13.5px;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .tokoh-list {
+                columns: 1;
+            }
+        }
+
+        /* TOMBOL NAVIGASI BOTTOM */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+        }
+
+        .navigation-buttons button {
+            padding: 9px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+            background-color: #003366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #004b8d;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logokkn.png" alt="Logo Desa">
+            <span class="logo-text">Desa Jamberama</span>
+        </div>
+        <nav>
+            <!-- class="active" sudah dipindahkan ke Profil Desa Jamberama -->
+            <a href="index.html">Beranda</a>
+            <a href="ProfilDesaJamberama.html" class="active">Profil Desa Jamberama</a>
+            <a href="ProdukUmkm.html">Produk Umkm Desa</a>
+            <a href="ObjekWisataDesa.html">Objek Wisata Desa</a>
+            <a href="PusatInformasiMap.html">Pusat Informasi Map Desa</a>
+            <a href="Galeri.html">Galeri Mahasiswa Kkn Umk</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1 class="page-title">Profil Desa Jamberama</h1>
+        <p class="page-subtitle">Kecamatan Selajambe, Kabupaten Kuningan, Jawa Barat</p>
+
+        <!-- GAMBARAN UMUM DESA -->
+        <h2 class="section-title"><i class="fa-solid fa-tree"></i> Gambaran Umum Desa</h2>
+        <p>
+            Desa Jamberama adalah bagian dari Kecamatan Selajambe, Kabupaten Kuningan yang sebagian besar masyarakatnya hidup dan beraktivitas sehari-hari dalam bidang <strong>pertanian</strong>. Desa ini memiliki luas wilayah <strong>762,026 Ha</strong>, yang terdiri dari tanah pemukiman, pesawahan, hutan/ladang, dan perkebunan.
+        </p>
+        <p>
+            Perkembangan Desa Jamberama dari tahun ke tahun terus meningkat pesat, baik dalam segi pelayanan umum, kesehatan, pendidikan, maupun sarana/prasarana fisik. Kemajuan tersebut tidak terlepas dari semangat kerja keras dan gotong royong pemerintah desa serta partisipasi masyarakat.
+        </p>
+
+        <!-- STATISTIK DEMOGRAFI -->
+        <div class="stat-grid">
+            <div class="stat-card">
+                <h4>Luas Wilayah</h4>
+                <div class="value">762,026 Ha</div>
+            </div>
+            <div class="stat-card">
+                <h4>Jumlah Penduduk</h4>
+                <div class="value">1.714 Jiwa</div>
+            </div>
+            <div class="stat-card">
+                <h4>Jumlah Kepala Keluarga</h4>
+                <div class="value">537 KK</div>
+            </div>
+            <div class="stat-card">
+                <h4>Jumlah Hak Pilih</h4>
+                <div class="value">1.316 Orang</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- KEADAAN SOSIAL & GEOGRAFIS -->
+        <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Keadaan Sosial & Letak Geografis</h2>
+        
+        <div class="grid-2-col">
+            <div>
+                <p>
+                    Secara administratif, wilayah kerja Desa Jamberama mencakup <strong>2 Dusun</strong>, <strong>3 RW</strong>, dan <strong>12 RT</strong>. Fasilitas umum seperti sarana ibadah, transportasi, komunikasi, dan ekonomi terus berkembang dengan baik setara dengan kawasan perkotaan.
+                </p>
+                <p>
+                    Selain itu, bidang kebudayaan dan seni tradisional lokal tetap terjaga dan dilestarikan hingga saat ini, di antaranya kesenian tradisional <strong>Tayuban</strong> dan <strong>Gemyungan</strong>.
+                </p>
+            </div>
+            <div>
+                <h3 style="font-size: 15px; color: #003366; margin-top: 0;">Batas-Batas Wilayah Desa:</h3>
+                <table class="boundaries-table">
+                    <tr>
+                        <td>Sebelah Utara</td>
+                        <td>: Kehutanan</td>
+                    </tr>
+                    <tr>
+                        <td>Sebelah Selatan</td>
+                        <td>: Desa Selajambe</td>
+                    </tr>
+                    <tr>
+                        <td>Sebelah Barat</td>
+                        <td>: Desa Padahurip</td>
+                    </tr>
+                    <tr>
+                        <td>Sebelah Timur</td>
+                        <td>: Desa Bagawat</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- SEJARAH DESA -->
+        <h2 class="section-title"><i class="fa-solid fa-landmark"></i> Sejarah Desa Jamberama</h2>
+        <p>
+            Pada abad ke-18 masa penjajahan Belanda, masyarakat di wilayah Desa Cidadap (berkedudukan di Dusun Cilimus) merasa tidak aman akibat gangguan penjajah dan binatang buas yang merusak tanaman bahan makanan. Sebagian warga memilih berpindah ke arah selatan tepi sungai Cijolang untuk membentuk pemukiman baru yang kelak dinamakan Desa Selajambe.
+        </p>
+        <p>
+            Dusun Cilimus kemudian menjadi dusun dengan populasi paling banyak di wilayah Desa Selajambe. Dikelilingi bukit-bukit, ber-tanah subur, serta berjarak hanya 1 km dari ibu kota Kecamatan, Dusun Cilimus berkembang sangat pesat. Hal ini memicu gagasan dari para tokoh masyarakat untuk mengajukan pemekaran dusun menjadi sebuah desa mandiri.
+        </p>
+
+        <h3 style="font-size: 15px; color: #003366;">Ringkasan Kronologi Pemekaran:</h3>
+        <div class="timeline-box">
+            <ul class="timeline-list">
+                <li><strong>10 November 1983 (Kamis Kliwon):</strong> Peresmian dan pelantikan dari Dusun Cilimus menjadi Desa Persiapan berdasarkan SK BUPATI NO. 1109/HK0211/SK/A/VII/1983 (Luas awal 632,783 Ha).</li>
+                <li><strong>25 November 1984 (Kamis Kliwon):</strong> Peresmian Desa Persiapan Jamberama menjadi <strong>Desa Definitif</strong> berdasarkan SK BUPATI NO. 1337/HK0211/SK/A/VIII/1984.</li>
+                <li><strong>29 September 1985 (Kamis Manis):</strong> Pemilihan Kepala Desa (Pilkades) pertama dengan calon tunggal Bapak S. Sutriadi yang meraih 967 suara.</li>
+                <li><strong>9 Januari 1986:</strong> Pelantikan Kepala Desa Jamberama yang pertama secara resmi.</li>
+            </ul>
+        </div>
+
+        <!-- TOKOH PERINTIS & PERANGKAT PERTAMA -->
+        <div class="grid-2-col">
+            <div>
+                <h3 style="font-size: 15px; color: #003366;">Tokoh Perintis Pemekaran Desa:</h3>
+                <ol class="tokoh-list">
+                    <li>Bapak T. Tisno (Kadus)</li>
+                    <li>Bapak Emon</li>
+                    <li>Bapak Eman</li>
+                    <li>Bapak Rakib</li>
+                    <li>Bapak Rohmat</li>
+                    <li>Bapak Jumadi</li>
+                    <li>Bapak Saka Jaya</li>
+                    <li>Bapak Suryono</li>
+                    <li>Bapak Djukari</li>
+                    <li>Bapak Suhenda</li>
+                </ol>
+            </div>
+            <div>
+                <h3 style="font-size: 15px; color: #003366;">Perangkat Desa Pertama (1986):</h3>
+                <ol class="tokoh-list">
+                    <li>Sekretaris Desa: Bapak Rakib</li>
+                    <li>Kaur Umum: Bapak Saka Jaya</li>
+                    <li>Kaur Kesra: Bapak Rohmat</li>
+                    <li>Kadus Cilimus 1: Bapak T. Tisno</li>
+                    <li>Kadus Cilimus 2: Bapak Djumadi</li>
+                    <li>Kadus Surian: Bapak Suryono</li>
+                </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- SEJARAH KEPEMIMPINAN / KUWU -->
+        <h2 class="section-title"><i class="fa-solid fa-users"></i> Sejarah Kepemimpinan Kuwu / Kepala Desa</h2>
+        <p>Sejak berdiri sebagai desa mandiri, Kepemimpinan Desa Jamberama telah diampu oleh beberapa Kepala Desa (Kuwu) berikut:</p>
+
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">No</th>
+                    <th>Nama Kepala Desa / Kuwu</th>
+                    <th style="width: 35%;">Masa Jabatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">1</td>
+                    <td><strong>Bapak S. Sutriadi</strong></td>
+                    <td>1983 – 1995</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">2</td>
+                    <td><strong>Bapak Jumadi</strong></td>
+                    <td>1995 – 2001</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">3</td>
+                    <td><strong>Bapak Yoyo Tri Jaya</strong></td>
+                    <td>2001 – 2007</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">4</td>
+                    <td><strong>Bapak Djukari, S.Pd.</strong></td>
+                    <td>2008 – 2015</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">5</td>
+                    <td><strong>Bapak Anda Nirwan, S.Pd.I</strong></td>
+                    <td>2018 – 2019</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">6</td>
+                    <td><strong>Bapak Suryaka, S.Pd</strong></td>
+                    <td>2020 – Sekarang</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- NAVIGASI BAWAH -->
+        <div class="navigation-buttons">
+            <a href="index.html">
+                <button><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</button>
+            </a>
+            <a href="ProdukUmkm.html">
+                <button>Produk UMKM <i class="fa-solid fa-arrow-right"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Kkn Desa Jamberama
+    </footer>
+</body>
+</html>

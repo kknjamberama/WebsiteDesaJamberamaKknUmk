@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Desa Jamberama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('LatarBelakang.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .header {
+            background-color: rgba(0, 51, 102, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            height: 50px;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 80px;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header a:hover, .header a.active {
+            background-color: #004b8d;
+        }
+
+        .main-content {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ANIMASI MASUK */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content .section {
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; 
+        }
+
+        .main-content .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .main-content .section:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        .main-content .section:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #003366;
+            border-bottom: 2px solid #ffc107;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .card {
+            flex: 0 0 calc(50% - 7.5px);
+            box-sizing: border-box;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* PERBAIKAN UKURAN GAMBAR ADA DI SINI */
+        .card img {
+            width: 100%;
+            height: 220px; /* Tinggi gambar disamaratakan */
+            object-fit: cover; /* Agar gambar tidak gepeng, akan terpotong rapi menyesuaikan kotak */
+            display: block;
+        }
+
+        .card .card-content {
+            padding: 12px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 12px 12px 8px 12px;
+        }
+
+        .card .card-content p {
+            font-size: 13px;
+            color: #555;
+            margin: 0;
+        }
+
+        .school-description {
+            padding: 15px;
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            max-height: 160px;
+            overflow-y: auto;
+        }
+
+        .school-description p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            font-size: 13px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+        }
+
+        .navigation-buttons button {
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+            background-color: #003366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #004b8d;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logokkn.png" alt="Logo Desa">
+            <span class="logo-text">Desa Jamberama</span>
+        </div>
+        <nav>
+            <!-- Menambahkan class "active" di Beranda dan melengkapi href yang kosong -->
+            <a href="index.html" class="active">Beranda</a>
+            <a href="ProfilDesaJamberama.html">Profil Desa Jamberama</a>
+            <a href="ProdukUmkm.html">Produk Umkm Desa</a>
+            <a href="ObjekWisataDesa.html">Objek Wisata Desa</a>
+            <a href="PusatInformasiMap.html">Pusat Informasi Map Desa</a>
+            <a href="Galeri.html">Galeri Mahasiswa Kkn Umk</a>
+        </nav>
+    </header>
+     
+    <div class="main-content">
+        <section class="section">
+            <h2>Tentang desa jamberama</h2>
+            <div class="school-description">
+                <p>Sejarah asal usul Desa Jamberama secara historis memang benar Dusun Cilimus dulunya merupakan pusat pemukiman dan cikal bakal dari Desa Cidadap, yang kemudian berganti nama dan berkembang menjadi Desa Selajambe (sekarang menjadi pusat Kecamatan Selajambe, Kuningan). Fakta Sejarah Hubungan Cilimus dan Cidadap Awal Mula Pendirian: Desa Jamberama dari pemekaran Desa Selajambe pertama kali didirikan pada tahun 1789 M dengan nama awal Desa Cidadap. Pusat Pemukiman di Cilimus: Ibu kota dan pusat awal masyarakat bermukim berada di kawasan yang dinamakan Cilimus, yang letaknya berada di dekat kaki gunung/hutan negara yang mengalir air sungai Cilimus di sebelah utara Sungai Cijolang. Perkembangan Jaman semakin maju : Seiring berjalannya waktu,maka memisahkan dipekarkan Desa menjadi Desa Jamberama, sementara nama Cilimus tetap melekat sebagai Dusun bagian dari sejarah lokal wilayah tersebut.. Desa Jamberama asal mulanya disebut Desa CIDADAP yang ber-Ibu Kota di CILIMUS dekat kaki gunung kehutanan Negara atau sebelah utara dari kali Cijolang. Desa Cidadap didirikan + pada tahun 1789 M, yang dipinpin oleh seorang Kepala Desa Wanita yaitu yang namanya tidak dikenal dan dibantu oleh para Lelugu Kampung dan seorang Kabayan. Dalam Memangku jabatannya, beliau sebagai Kepala Desa sangat baik dan supel, bertanggung jawab terhadap rakyatnya dan tidak terpaku kepada adapt peraturan Pemerintah Penjajah Belanda. Mata pencaharian rakayat pada waktu itu yaitu bercocok tanam/bertani dan tanaman yang diutamakan adalah padi sawah, padi huma dan umbi-umbian, dengan sistim bertani tidak menetap atau berpindah-pindah tempat, karena setelah tanah-tanah tersebut kurang subur mereka meninggalkannya dan mencari / memilih lagi tanah masih subur. Bangunan-bangunan perumahan rakyat dan pemerintah pada waktu itu dibuat dari bahan kayu, bamboo yang beratapkan alang-alang dan ijuk dengan model bangunan sangat kasar sekali bahannya tebal tanpa ukiran potongan yang sederhana tapi cukup kuat dan tahap lama. Penduduk pada waktu itu beragama islam kehindu-hinduan dan kesenian tradisional rakyat pada waktu itu sudah ampak seperti dog dog untuk hiburan ngareog dan dapat dipentaskan pada acara Khitanan, pernikahan dll, dan seni genjringpun dipentaskan pada bulan mulud yang tempatnya dilaksanakan di Mesjid dan Langgar-langgar. Seperangkat Goong pun sudah ada, yang digunakan untuk seni Tayuban yang setiap tahun dilaksanakan acara Hajat Desa/Tahunan dengan disebut Babaritan. Berhubung keadaan penduduk pada waktu itu merasa tidak aman dari gangguan-gangguan binatang buas seperti harimau, babi hutan dll, yang selalu mengganggu ketertiban rakyat terutama sekali merusak tanam-tanaman pertanian rakyat, maka penduduk desa tersebut berusaha untuk menghindari dari gangguan-gangguan binatang tersebut dengan jalan berpidah tempat ketempat yang lebih aman sambil bercocok tanam tetapi perpidahan tempat itu tidak jauh dari dari tempat asal hanya beberap kilometer saja. Seiring dengan perkembangan jumlah Penduduk semakin pesat, dan kondisi sudah aman dan setabil jauh dari gangguan hewan buas maka tempat tingal pendudukpun terus menyebar kearah Utara lagi yang nyelusurii aliran sungai cilimus, sehingga pada tahun 1982 memisahkan diri dari desa Selajambe menjadi Desa Jamberama sampai sekarang, dengan mengambil nama Desa Dari situs yang ada depan Bale Desa nama situs Eyang Daka dengan Blok Jamberama.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Infomasi Desa Jamberama</h2>
+            <div class="cards">
+                <div class="card" onclick="window.location.href='ProdukUmkm.html'"> <!-- Menambahkan fungsi klik kartu -->
+                    <h3>Produk Umkm Desa Jamberama</h3>
+                    <img src="1.png" alt="Produk UMKM">
+                    <div class="card-content">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='wisata.html'">
+                    <h3>Objek Wisata Desa Jamberama</h3>
+                    <img src="Curug.jpeg" alt="Wisata">
+                    <div class="card-content">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="cards">
+                <div class="card" onclick="window.location.href='map.html'">
+                    <h3>Pusat Informasi Map Desa</h3>
+                    <img src="map.png" alt="Map Desa">
+                    <div class="card-content">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='galeri.html'">
+                    <h3>Galeri Mahasiswa Kkn</h3>
+                    <img src="galeri.png" alt="Galeri KKN">
+                    <div class="card-content">
+                        <p></p> 
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="navigation-buttons">
+            <!-- Menyesuaikan tombol back dan next -->
+            <a href="#">
+                <button>Back</button>
+            </a>
+            <a href="ProfilDesaJamberama.html">
+                <button>Next</button>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Kkn Desa Jamberama 
+    </footer>
+</body>
+</html>

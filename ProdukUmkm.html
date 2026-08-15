@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk UMKM Desa Jamberama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN untuk Icon WA & Navigasi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('LatarBelakang.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        .header {
+            background-color: rgba(0, 51, 102, 0.95);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            min-height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: auto;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header a:hover, .header a.active {
+            background-color: #004b8d;
+        }
+
+        .main-content {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* ANIMASI MASUK */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            color: #003366;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* GRID UMKM */
+        .umkm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .umkm-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .umkm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+        /* Foto Produk Utuh Tanpa Terpotong (DIPERBAIKI) */
+        .umkm-card img {
+            width: 100%;
+            height: 200px; 
+            object-fit: contain; /* Diubah dari cover menjadi contain agar gambar utuh */
+            background-color: #ffffff; /* Menambahkan latar belakang agar sisa ruang rapi */
+            display: block;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .umkm-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .umkm-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #003366;
+            margin: 0 0 8px 0;
+        }
+
+        .umkm-owner {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .umkm-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+
+        .umkm-price {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 15px;
+            margin-top: auto;
+        }
+
+        /* TOMBOL WHATSAPP & TELEPON */
+        .btn-wa, .btn-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+            box-shadow: 0 2px 5px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-wa:hover {
+            background-color: #1da851;
+            transform: scale(1.02);
+        }
+
+        .btn-call {
+            background-color: #1976D2;
+            box-shadow: 0 2px 5px rgba(25, 118, 210, 0.3);
+        }
+
+        .btn-call:hover {
+            background-color: #1565C0;
+            transform: scale(1.02);
+        }
+
+        .btn-wa i, .btn-call i {
+            font-size: 16px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+        }
+
+        .navigation-buttons button {
+            padding: 9px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+            background-color: #003366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #004b8d;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logokkn.png" alt="Logo Desa">
+            <span class="logo-text">Desa Jamberama</span>
+        </div>
+        <nav>
+            <!-- Tautan Navigasi Sudah Disesuaikan -->
+            <a href="index.html">Beranda</a>
+            <a href="ProfilDesaJamberama.html">Profil Desa Jamberama</a>
+            <a href="ProdukUmkm.html" class="active">Produk Umkm Desa</a>
+            <a href="ObjekWisataDesa.html">Objek Wisata Desa</a>
+            <a href="PusatInformasiMap.html">Pusat Informasi Map Desa</a>
+            <a href="Galeri.html">Galeri Mahasiswa Kkn Umk</a>
+        </nav>
+    </header>
+     
+    <div class="main-content">
+        <h1 class="page-title">Produk UMKM Desa Jamberama</h1>
+        <p class="page-subtitle">Dukung perekonomian lokal dengan membeli produk-produk unggulan hasil karya warga Desa Jamberama.</p>
+
+        <div class="umkm-grid">
+            
+            <!-- PRODUK 1: Molen Mak Ipong -->
+            <div class="umkm-card">
+                <img src="2.png" alt="Molen Mak Ipong">
+                <div class="umkm-info">
+                    <h3>Molen Mak Ipong</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Mak Ipong</div>
+                    <p class="umkm-desc">Kelezatan resep asli selama 22 tahun! Selalu <strong>Fresh</strong> dengan rasa Pisang, Kacang Hijau, dan Ubi. Melayani pengiriman (COD/Free Ongkir area dekat, Ciawi, Selajambe, dll). ✅ Halal.</p>
+                    <div class="umkm-price">Rp 1.000 / pcs</div>
+                    <a href="https://wa.me/6285224185226?text=Halo%20Mak%20Ipong,%20saya%20tertarik%20untuk%20membeli%20Molennya" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUK 2: Rempeye Bu Arnasih -->
+            <div class="umkm-card">
+                <img src="3.png" alt="Rempeye Bu Arnasih">
+                <div class="umkm-info">
+                    <h3>Rempeyek Bu Arnasih</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Bu Arnasih</div>
+                    <p class="umkm-desc">Cari teman makan yang super renyah? Rempeyek original ini teksturnya <strong>jauh lebih renyah</strong>. Usaha 3 tahun, rutin suplai ke warung dan aman dikirim ke luar kota via Ekspedisi/Pos.</p>
+                    <div class="umkm-price">Rp 6.000 - Rp 10.000 / bks</div>
+                    <a href="https://wa.me/6282124375342?text=Halo%20Bu%20Arnasih,%20saya%20tertarik%20untuk%20membeli%20Rempeyeknya" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUK 3: Kue Kering Ibu Cicin -->
+            <div class="umkm-card">
+                <img src="4.png" alt="Kue Kering Ibu Cicin">
+                <div class="umkm-info">
+                    <h3>Kue Kering Ibu Cicin</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Ibu Cicin</div>
+                    <p class="umkm-desc">Sajian wajib Lebaran (Nastar, Kastengel, Kue Kacang, dll). Tahan 3 bulan meski tanpa pengawet. Pengiriman khusus POS Indonesia (bukan JNE). Hanya sistem PO jelang Idul Fitri. ✅ Halal.</p>
+                    <div class="umkm-price">Rp 80.000 / toples</div>
+                    <a href="https://wa.me/6282316609687?text=Halo%20Ibu%20Cicin,%20saya%20mau%20pesan%20Kue%20Keringnya" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUK 4: Kambing Pak Dadi -->
+            <div class="umkm-card">
+                <img src="5.png" alt="Kambing Pak Dadi">
+                <div class="umkm-info">
+                    <h3>Jual Beli Kambing</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Pak Dadi</div>
+                    <p class="umkm-desc">Usaha ternak mandiri sejak 1987. Menjual kambing/domba lokal (usia 1-2 tahun) dengan pakan <strong>100% rumput alami</strong>. Area Cikijing & Kuningan. Hanya melayani via Telepon.</p>
+                    <div class="umkm-price">Mulai Rp 600.000 / ekor</div>
+                    <a href="tel:+6285221322487" class="btn-call">
+                        <i class="fa-solid fa-phone"></i> Hubungi Pak Dadi
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUK 5: Kambing Garut Pak Rohanda -->
+            <div class="umkm-card">
+                <img src="6.png" alt="Kambing Garut Pak Rohanda">
+                <div class="umkm-info">
+                    <h3>Ternak Kambing Garut</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Pak Rohanda</div>
+                    <p class="umkm-desc">Berpengalaman lebih dari 10 tahun menyuplai spesialis <strong>Kambing Garut</strong> berkualitas tinggi ke tengkulak area Jamberama dan Padahurip. Postur gagah, sangat cocok untuk Qurban.</p>
+                    <div class="umkm-price">Rp 5 Juta - Rp 10 Juta / ekor</div>
+                    <a href="https://wa.me/6282319871861?text=Halo%20Pak%20Rohanda,%20saya%20tertarik%20dengan%20Kambing%20Garutnya" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUK 6: Basreng Ibu Trisnawati -->
+            <div class="umkm-card">
+                <img src="7.png" alt="Basreng Ibu Trisnawati">
+                <div class="umkm-info">
+                    <h3>Basreng & Keripik Pisang</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Ibu Trisnawati</div>
+                    <p class="umkm-desc">Cemilan home-made eksklusif! Diproduksi terbatas 20 bungkus basreng mentah/hari menjaga kualitas. Varian rasa: Asin, Pedas, dan bumbu <strong>Chili Oil</strong>. Tersedia juga keripik pisang.</p>
+                    <div class="umkm-price">Rp 5.000 / ons</div>
+                    <a href="https://wa.me/6285697980591?text=Halo%20Ibu%20Trisnawati,%20saya%20mau%20pesan%20Basrengnya" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUK 7: Kusen Cor Pak Arkandi -->
+            <div class="umkm-card">
+                <img src="8.png" alt="Kusen Cor Pak Arkandi">
+                <div class="umkm-info">
+                    <h3>Kusen Cor Beton</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Pak Arkandi</div>
+                    <p class="umkm-desc">Solusi material bangunan kokoh & anti rayap sejak 2015. Menyediakan cetakan Pintu, Jendela, Loster (Sistem PO). Bisa request ukuran, beli set, dan melayani jasa pasang. Siap kirim luar Ciamis.</p>
+                    <div class="umkm-price">Mulai Rp 250.000 / pcs</div>
+                    <a href="https://wa.me/6285324934148?text=Halo,%20saya%20mau%20tanya%20tentang%20Kusen%20Cor%20Pak%20Arkandi" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+         
+            <!-- PRODUK 8: Penggilingan Padi Pak Nana -->
+            <div class="umkm-card">
+                <img src="9.png" alt="Jasa Penggilingan Padi Pak Nana">
+                <div class="umkm-info">
+                    <h3>Jasa Penggilingan Padi</h3>
+                    <div class="umkm-owner"><i class="fa-solid fa-user"></i> Pemilik: Pak Nana</div>
+                    <p class="umkm-desc">Melayani jasa giling padi cepat dengan fasilitas 2 mesin (Mesin Penggiling & Mesin Dedak). Menerima partai dengan batas giling minimal 5 kg dan maksimal 50 kg. (Tidak menjual beras).</p>
+                    <div class="umkm-price">Tarif: Rp 500 / kg</div>
+                    <a href="https://wa.me/6282295211738?text=Halo%20Istri%20Pak%20Nana,%20saya%20mau%20tanya%20soal%20penggilingan%20padi" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="navigation-buttons">
+            <!-- Tautan Tombol Bawah Sudah Disesuaikan -->
+            <a href="ProfilDesaJamberama.html">
+                <button><i class="fa-solid fa-arrow-left"></i> Kembali ke Profil</button>
+            </a>
+            <a href="ObjekWisataDesa.html">
+                <button>Wisata Desa <i class="fa-solid fa-arrow-right"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Kkn Desa Jamberama
+    </footer>
+</body>
+</html>

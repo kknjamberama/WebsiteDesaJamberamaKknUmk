@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisata Curug Tonjong - Desa Jamberama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('LatarBelakang.png');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        /* HEADER & NAVIGASI */
+        .header {
+            background-color: rgba(0, 51, 102, 0.95);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            min-height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 70px;
+            height: auto;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header a:hover, .header a.active {
+            background-color: #004b8d;
+        }
+
+        /* MAIN CONTENT CONTAINER */
+        .main-content {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            color: #003366;
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* BANNER FOTO UTAMA WISATA */
+        .featured-wisata {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .featured-image-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-wisata:hover .featured-image-container img {
+            transform: scale(1.03);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ffc107;
+            color: #003366;
+            padding: 6px 14px;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .featured-details {
+            padding: 25px;
+        }
+
+        .featured-details h2 {
+            margin: 0 0 10px 0;
+            color: #003366;
+            font-size: 24px;
+        }
+
+        .wisata-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .wisata-meta div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .wisata-meta i {
+            color: #003366;
+        }
+
+        .featured-details p {
+            line-height: 1.6;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* TOMBOL NAVIGASI BOTTOM */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+        }
+
+        .navigation-buttons button {
+            padding: 9px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+            background-color: #003366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #004b8d;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .featured-image-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logokkn.png" alt="Logo Desa">
+            <span class="logo-text">Desa Jamberama</span>
+        </div>
+        <nav>
+            <!-- class="active" sudah dipindahkan ke Objek Wisata Desa -->
+            <a href="index.html">Beranda</a>
+            <a href="ProfilDesaJamberama.html">Profil Desa Jamberama</a>
+            <a href="ProdukUmkm.html">Produk Umkm Desa</a>
+            <a href="ObjekWisataDesa.html" class="active">Objek Wisata Desa</a>
+            <a href="PusatInformasiMap.html">Pusat Informasi Map Desa</a>
+            <a href="Galeri.html">Galeri Mahasiswa Kkn Umk</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1 class="page-title">Objek Wisata Desa Jamberama</h1>
+        <p class="page-subtitle">Jelajahi keindahan alam dan potensi wisata terbaik di Desa Jamberama, Kecamatan Selajambe.</p>
+
+        <!-- KARTU WISATA CURUG TONJONG -->
+        <div class="featured-wisata">
+            <div class="featured-image-container">
+                <span class="featured-badge"><i class="fa-solid fa-water"></i> Wisata Alam</span>
+                <img src="Curug.jpeg" alt="Wisata Curug Tonjong Desa Jamberama">
+            </div>
+            
+            <div class="featured-details">
+                <h2>Curug Tonjong</h2>
+                
+                <div class="wisata-meta">
+                    <div><i class="fa-solid fa-location-dot"></i> Desa Jamberama, Kecamatan Selajambe, Kabupaten Kuningan</div>
+                </div>
+
+                <p>
+                    <strong>Curug Tonjong</strong> merupakan destinasi wisata alam tersembunyi yang menyuguhkan kesegaran dan keindahan aliran air terjun alami di Desa Jamberama, Kecamatan Selajambe, Kabupaten Kuningan. Dikunjungi oleh alam perbukitan yang hijau serta udara pegunungan yang masih sangat asri, tempat ini menawarkan suasana tenang dan alami yang cocok untuk melepas penat.
+                </p>
+                <p>
+                    Keberadaan Curug Tonjong menjadi salah satu potensi kekayaan alam unggulan milik Desa Jamberama yang menyajikan pemandangan indah bagi para pengunjung dan pencinta alam.
+                </p>
+            </div>
+        </div>
+
+        <!-- NAVIGASI BAWAH -->
+        <div class="navigation-buttons">
+            <a href="ProdukUmkm.html">
+                <button><i class="fa-solid fa-arrow-left"></i> Produk UMKM</button>
+            </a>
+            <a href="PusatInformasiMap.html">
+                <button>Pusat Informasi Map <i class="fa-solid fa-arrow-right"></i></button>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 Kkn Desa Jamberama
+    </footer>
+</body>
+</html>
