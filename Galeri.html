@@ -173,34 +173,49 @@
             line-height: 1.4;
         }
 
-        /* TOMBOL NAVIGASI BOTTOM */
+        /* PERBAIKAN STYLING TOMBOL NAVIGASI BAWAH */
         .navigation-buttons {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-top: 40px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            gap: 10px;
+            padding-top: 20px;
+            border-top: 2px solid #eaeaea;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .navigation-buttons a { text-decoration: none; }
+        .navigation-buttons a {
+            text-decoration: none;
+            display: inline-block;
+        }
         
         .navigation-buttons button {
-            padding: 10px 18px;
-            font-size: 13px;
-            font-weight: 500;
-            color: white;
+            padding: 12px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
             background-color: #003366;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0, 51, 102, 0.2);
         }
 
-        .navigation-buttons button:hover { background-color: #004b8d; }
+        .navigation-buttons button:hover {
+            background-color: #004b8d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 51, 102, 0.3);
+        }
+
+        .navigation-buttons button:active {
+            transform: translateY(0);
+        }
 
         .footer {
             text-align: center;
@@ -251,6 +266,16 @@
                 grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
                 gap: 15px;
             }
+
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .navigation-buttons a, 
+            .navigation-buttons button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -280,89 +305,72 @@
         <h1 class="page-title"><i class="fa-solid fa-camera-retro"></i> Galeri Kegiatan</h1>
         <p class="page-subtitle">Dokumentasi Pelaksanaan Program Kerja (Proker) Mahasiswa KKN UMK di Desa Jamberama</p>
 
+        <!-- GRID GALERI -->
         <div class="gallery-grid">
-            
-            <!-- Foto 1 -->
+
+            <!-- Foto Baru 1 -->
             <div class="gallery-item">
-                <img src="proker1.jpg" alt="Proker 1" class="gallery-img">
+                <img src="kelas_ceriabahasa.jpg" alt="Kelas Ceria Tiga Bahasa" class="gallery-img">
                 <div class="gallery-caption">
-                    <h3>Penyambutan KKN</h3>
-                    <p>Acara penyambutan dan penerimaan mahasiswa KKN oleh Kepala Desa Jamberama.</p>
+                    <h3>Kelas Ceria Tiga Bahasa</h3>
+                    <p>Mengajar siswa SD bahasa Sunda, Indonesia, dan Inggris secara interaktif.</p>
                 </div>
             </div>
 
-            <!-- Foto 2 -->
+            <!-- Foto Baru 2 -->
             <div class="gallery-item">
-                <img src="proker2.jpg" alt="Proker 2" class="gallery-img">
+                <img src="gerbang_ilmu.jpg" alt="Gerbang Ilmu" class="gallery-img">
                 <div class="gallery-caption">
-                    <h3>Sosialisasi UMKM</h3>
-                    <p>Kegiatan pendampingan dan sosialisasi pemasaran digital untuk UMKM desa.</p>
+                    <h3>Gerbang Ilmu</h3>
+                    <p>Meningkatkan minat baca anak-anak melalui pojok literasi buku bacaan yang telah disiapkan.</p>
                 </div>
             </div>
 
-            <!-- Foto 3 -->
+            <!-- Foto Baru 3 -->
             <div class="gallery-item">
-                <img src="proker3.jpg" alt="Proker 3" class="gallery-img">
+                <img src="curug_tonjong.jpg" alt="Revitalisasi Curug Tonjong" class="gallery-img">
                 <div class="gallery-caption">
-                    <h3>Kerja Bakti Bersama</h3>
-                    <p>Kerja bakti membersihkan lingkungan dan fasilitas umum di Desa Jamberama.</p>
+                    <h3>Revitalisasi Curug Tonjong</h3>
+                    <p>Pembersihan kawasan wisata Curug Tonjong dan penanaman plang petunjuk arah.</p>
                 </div>
             </div>
 
-            <!-- Foto 4 -->
+            <!-- Foto Baru 4 -->
             <div class="gallery-item">
-                <img src="proker4.jpg" alt="Proker 4" class="gallery-img">
+                <img src="gesita.jpg" alt="Gesita" class="gallery-img">
                 <div class="gallery-caption">
-                    <h3>Kegiatan Belajar Mengajar</h3>
-                    <p>Membantu tenaga pendidik dalam proses belajar mengajar di SDN Jamberama.</p>
+                    <h3>Gesita (Gerakan Senam Sehat)</h3>
+                    <p>Mengajak ibu-ibu Desa Jamberama untuk berolahraga dan senam bersama secara rutin.</p>
                 </div>
             </div>
 
-            <!-- Foto 5 -->
+            <!-- Foto Baru 5 -->
             <div class="gallery-item">
-                <img src="proker5.jpg" alt="Proker 5" class="gallery-img">
+                <img src="lomba_senam.jpg" alt="Lomba Senam Kuningan Melesat" class="gallery-img">
                 <div class="gallery-caption">
-                    <h3>Pemberdayaan Posyandu</h3>
-                    <p>Membantu kader posyandu dalam kegiatan pengecekan kesehatan anak dan balita.</p>
+                    <h3>Lomba Senam Kuningan Melesat</h3>
+                    <p>Pelaksanaan ajang perlombaan senam Kuningan Melesat yang diikuti oleh perwakilan setiap RT.</p>
                 </div>
             </div>
 
-            <!-- Foto 6 -->
+            <!-- Foto Baru 6 -->
             <div class="gallery-item">
-                <img src="proker6.jpg" alt="Proker 6" class="gallery-img">
+                <img src="gkso.jpg" alt="GKSO" class="gallery-img">
                 <div class="gallery-caption">
-                    <h3>Pembuatan Plang Jalan</h3>
-                    <p>Pembuatan dan pemasangan plang penunjuk arah di beberapa titik jalan desa.</p>
+                    <h3>GKSO (Gerakan Keluarga Sadar Obat)</h3>
+                    <p>Edukasi dan sosialisasi pentingnya pemahaman serta penggunaan obat yang benar bagi keluarga.</p>
                 </div>
             </div>
 
-            <!-- Foto 7 -->
-            <div class="gallery-item">
-                <img src="proker7.jpg" alt="Proker 7" class="gallery-img">
-                <div class="gallery-caption">
-                    <h3>Pengembangan Wisata</h3>
-                    <p>Ikut serta mempromosikan dan menata potensi objek wisata lokal.</p>
-                </div>
-            </div>
-
-            <!-- Foto 8 -->
-            <div class="gallery-item">
-                <img src="proker8.jpg" alt="Proker 8" class="gallery-img">
-                <div class="gallery-caption">
-                    <h3>Perpisahan KKN</h3>
-                    <p>Penutupan kegiatan KKN dan perpisahan dengan warga Desa Jamberama.</p>
-                </div>
-            </div>
-
-        </div>
+        </div> <!-- Tag penutup gallery-grid -->
 
         <!-- NAVIGASI BAWAH -->
         <div class="navigation-buttons">
             <a href="PusatInformasiMap.html">
-                <button><i class="fa-solid fa-arrow-left"></i> Pusat Informasi Map</button>
+                <button type="button"><i class="fa-solid fa-arrow-left"></i> Pusat Informasi Map</button>
             </a>
             <a href="index.html">
-                <button><i class="fa-solid fa-house"></i> Kembali ke Beranda</button>
+                <button type="button"><i class="fa-solid fa-house"></i> Kembali ke Beranda</button>
             </a>
         </div>
     </div>
